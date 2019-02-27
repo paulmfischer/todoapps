@@ -20,6 +20,11 @@ namespace todoapps.Controllers
             return View();
         }
 
+        public IActionResult VueJS()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
