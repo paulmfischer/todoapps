@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Vanilla JS";
+}
+<h3>@ViewData["Title"]</h3>
+
+<div class="row pb-3">
+    <div class="col">
+        <form>
+            <div class="row">
+                <div class="col-6">
+                    <label for="item">To do:</label>
+                    <input id="item" type="text" placeholder="To do" />
+                </div>
+                <div class="col-2">
+                    <button id="submit" type="submit" class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div id="tasks">
+            No Tasks currently, add one from the form above.
+        </div>
+    </div>
+</div>
+
+@section scripts  {
+    <script src="~/js/vanilla.js" asp-append-version="true"></script>
+}
