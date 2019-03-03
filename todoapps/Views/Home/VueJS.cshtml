@@ -4,25 +4,32 @@
 
 <h3>@ViewData["Title"]</h3>
 
-<div id="app" class="row pb-3">
-    <div class="col">
-        <form>
-            <div class="row">
-                <div class="col-6">
-                    <label for="item">To do:</label>
-                    <input id="item" type="text" placeholder="To do" v-model="newTask"/>
+<div id="app">
+    <div class="row pb-3">
+        <div class="col">
+            <form>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="item">To do:</label>
+                        <input id="item" type="text" placeholder="To do" v-model="newTask" />
+                    </div>
+                    <div class="col-2">
+                        <button id="submit" type="submit" v-on:click="addItem" class="btn btn-primary btn-sm">Add</button>
+                    </div>
                 </div>
-                <div class="col-2">
-                    <button id="submit" type="submit" class="btn btn-primary btn-sm">Add</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col">
-        <div id="tasks">
-            No Tasks currently, add one from the form above.
+    <div class="row">
+        <div class="col">
+            <span v-if="isTasksEmpty">No Tasks currently, add one from the form above.</span>
+            <div v-else>
+                <ul>
+                    <li v-for="task in tasks" class="pb-3">
+                        <todo-item v-bind:todo="task" v-on:remove-todo="removeItem"></todo-item>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
