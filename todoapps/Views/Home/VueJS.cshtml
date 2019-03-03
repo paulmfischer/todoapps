@@ -24,7 +24,7 @@
         <div class="col">
             <span v-if="isTasksEmpty">No Tasks currently, add one from the form above.</span>
             <div v-else>
-                <ul>
+                <ul class="no-bullets">
                     <li v-for="task in tasks" class="pb-3">
                         <todo-item v-bind:todo="task" v-on:remove-todo="removeItem"></todo-item>
                     </li>

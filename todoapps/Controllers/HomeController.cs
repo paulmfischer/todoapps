@@ -25,6 +25,26 @@ namespace todoapps.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Razor()
+        {
+            return View(new ToDoListViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Razor(ToDoListViewModel toDoListViewModel)
+        {
+            var newItem = new ToDoViewModel
+            {
+                Id = toDoListViewModel.ToDos.Count > 0 ? toDoListViewModel.ToDos[toDoListViewModel.ToDos.Count - 1].Id : 0,
+                Name = toDoListViewModel.NewTask
+            };
+
+            toDoListViewModel.NewTask = string.Empty;
+            toDoListViewModel.ToDos.Add(newItem);
+            return View(toDoListViewModel);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
