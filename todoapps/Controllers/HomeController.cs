@@ -45,6 +45,14 @@ namespace todoapps.Controllers
             return View(toDoListViewModel);
         }
 
+        [HttpDelete]
+        public IActionResult Razor([FromBody] ToDoListViewModel toDoListViewModel, int Id)
+        {
+            toDoListViewModel.ToDos.RemoveAt(Id);
+
+            return View(toDoListViewModel);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

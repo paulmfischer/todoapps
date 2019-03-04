@@ -42,7 +42,15 @@
                         <div class="row">
                             <div class="col-6"><span>@todo.Name</span></div>
                             <div class="col-2">
-                                <button id="remove-@todo.Id" class="removeItem btn btn-danger btn-sm" type="button">Remove</button>
+                                <form asp-controller="Home" asp-action="Razor" method="delete">
+                                    <button class="removeItem btn btn-danger btn-sm" type="submit">Remove</button>
+                                    <input type="hidden" name="Id" value="@todo.Id" />
+                                    @for (int i = 0; i < Model.ToDos.Count; i++)
+                                    {
+                                        @Html.HiddenFor(vm => vm.ToDos[i].Id)
+                                        @Html.HiddenFor(vm => vm.ToDos[i].Name)
+                                    }
+                                </form>
                             </div>
                         </div>
                     </li>
@@ -52,3 +60,10 @@
     </div>
 </div>
 
+@section scripts {
+    <script>
+        let tasks = @Json.Serialize(Model.ToDos)
+
+        
+    </script>
+}
