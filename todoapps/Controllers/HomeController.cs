@@ -36,7 +36,7 @@ namespace todoapps.Controllers
         {
             var newItem = new ToDoViewModel
             {
-                Id = toDoListViewModel.ToDos.Count > 0 ? toDoListViewModel.ToDos[toDoListViewModel.ToDos.Count - 1].Id : 0,
+                Id = toDoListViewModel.ToDos.Count > 0 ? toDoListViewModel.ToDos[toDoListViewModel.ToDos.Count - 1].Id + 1 : 0,
                 Name = toDoListViewModel.NewTask
             };
 
@@ -45,12 +45,12 @@ namespace todoapps.Controllers
             return View(toDoListViewModel);
         }
 
-        [HttpDelete]
-        public IActionResult Razor([FromBody] ToDoListViewModel toDoListViewModel, int Id)
+        [HttpPost]
+        public IActionResult RazorDelete(ToDoListViewModel toDoListViewModel, int Id)
         {
-            toDoListViewModel.ToDos.RemoveAt(Id);
+            toDoListViewModel.ToDos = toDoListViewModel.ToDos.Where(item => item.Id != Id).ToList();
 
-            return View(toDoListViewModel);
+            return View("Razor", toDoListViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

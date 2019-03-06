@@ -35,14 +35,14 @@
         }
         else
         {
-            @foreach (var todo in Model.ToDos)
-            {
-                <ul class="no-bullets">
+            <ul class="no-bullets">
+                @foreach (var todo in Model.ToDos)
+                {
                     <li class="pb-3">
                         <div class="row">
                             <div class="col-6"><span>@todo.Name</span></div>
                             <div class="col-2">
-                                <form asp-controller="Home" asp-action="Razor" method="delete">
+                                <form asp-controller="Home" asp-action="RazorDelete" method="post">
                                     <button class="removeItem btn btn-danger btn-sm" type="submit">Remove</button>
                                     <input type="hidden" name="Id" value="@todo.Id" />
                                     @for (int i = 0; i < Model.ToDos.Count; i++)
@@ -54,10 +54,10 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                }
+            </ul>
             }
-        }
-    </div>
+        </div>
 </div>
 
 @section scripts {
