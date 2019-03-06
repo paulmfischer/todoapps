@@ -1,0 +1,69 @@
+﻿@model todoapps.Models.ToDoListViewModel
+
+@{
+    ViewData["Title"] = "C# Razor Page";
+}
+<h3>@ViewData["Title"]</h3>
+
+<div class="row pb-3">
+    <div class="col">
+        <form asp-controller="Home" asp-action="Razor" method="post">
+            <div class="row">
+                <div class="col-6">
+                    <label for="NewTask">To do:</label>
+                    <input asp-for="NewTask" placeholder="To do" />
+                </div>
+                <div class="col-2">
+                    <button id="submit" type="submit" class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </div>
+            @for (int i = 0; i < Model.ToDos.Count; i++)
+            {
+                @Html.HiddenFor(vm => vm.ToDos[i].Id)
+                @Html.HiddenFor(vm => vm.ToDos[i].Name)
+            }
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        @if (Model.ToDos.Count == 0)
+        {
+            <div id="tasks">
+                No Tasks currently, add one from the form above.
+            </div>
+        }
+        else
+        {
+            <ul class="no-bullets">
+                @foreach (var todo in Model.ToDos)
+                {
+                    <li class="pb-3">
+                        <div class="row">
+                            <div class="col-6"><span>@todo.Name</span></div>
+                            <div class="col-2">
+                                <form asp-controller="Home" asp-action="RazorDelete" method="post">
+                                    <button class="removeItem btn btn-danger btn-sm" type="submit">Remove</button>
+                                    <input type="hidden" name="Id" value="@todo.Id" />
+                                    @for (int i = 0; i < Model.ToDos.Count; i++)
+                                    {
+                                        @Html.HiddenFor(vm => vm.ToDos[i].Id)
+                                        @Html.HiddenFor(vm => vm.ToDos[i].Name)
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            }
+        </div>
+</div>
+
+@section scripts {
+    <script>
+        let tasks = @Json.Serialize(Model.ToDos)
+
+        
+    </script>
+}
