@@ -12,6 +12,7 @@ class ToDoList extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.removeItem = this.removeItem.bind(this);
     }
 
     handleChange(event) {
@@ -20,17 +21,28 @@ class ToDoList extends React.Component {
 
     addItem(event) {
         event.preventDefault();
-        console.log('start', this.state.tasks, this.state.value);
         this.setState({
-            tasks: [...this.tasks, {
+            tasks: [...this.state.tasks, {
                 id: this.id++,
                 name: this.state.value
-            }]
+            }],
+            value: ''
         });
-        console.log('end', this.state.tasks);
+    }
+
+    removeItem(id) {
+        this.setState({
+            tasks: this.state.tasks.filter(task => task.id !== id)
+        });
     }
 
     render() {
+        const listItems = this.state.tasks.map((task) =>
+            <li key={task.id} class="pb-3">
+                <ToDoItem task={task} onRemoveItem={this.removeItem}></ToDoItem>
+            </li>
+        );
+
         return (
             <div>
                 <div class="row pb-3">
@@ -54,9 +66,7 @@ class ToDoList extends React.Component {
                             (<span>No Tasks currently, add one from the form above.</span>) :
                             (<div>
                                 <ul class="no-bullets">
-                                    <li class="pb-3">
-                                        <ToDoItem></ToDoItem>
-                                    </li>
+                                    {listItems}
                                 </ul>
                             </div>)
                         }
@@ -70,10 +80,21 @@ class ToDoList extends React.Component {
 class ToDoItem extends React.Component {
     constructor(props) {
         super(props);
+        this.removeTask = this.removeTask.bind(this);
+    }
+
+    removeTask(event) {
+        event.preventDefault();
+        this.props.onRemoveItem(this.props.task.id);
     }
 
     render() {
-        return 'this is an item';
+        return (
+            <div class="row">
+                <div class="col-6"><span>{this.props.task.name}</span></div>
+                <div class="col-2"><button class="btn btn-danger btn-sm" type="button" onClick={this.removeTask}>Remove</button></div>
+            </div>
+        );
     }
 }
 
