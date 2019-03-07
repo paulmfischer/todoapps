@@ -38,34 +38,34 @@ class ToDoList extends React.Component {
 
     render() {
         const listItems = this.state.tasks.map((task) =>
-            <li key={task.id} class="pb-3">
+            <li key={task.id} className="pb-3">
                 <ToDoItem task={task} onRemoveItem={this.removeItem}></ToDoItem>
             </li>
         );
 
         return (
             <div>
-                <div class="row pb-3">
-                    <div class="col">
+                <div className="row pb-3">
+                    <div className="col">
                         <form onSubmit={this.addItem}>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="item">To do:</label>&nbsp;
+                            <div className="row">
+                                <div className="col-6">
+                                    <label htmlFor="item">To do:</label>&nbsp;
                                     <input id="item" type="text" placeholder="To do" value={this.state.value} onChange={this.handleChange} />
                                 </div>
-                                <div class="col-2">
-                                    <button id="submit" type="submit" class="btn btn-primary btn-sm">Add</button>
+                                <div className="col-2">
+                                    <button id="submit" type="submit" className="btn btn-primary btn-sm">Add</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div >
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                         {this.state.tasks.length === 0 ?
                             (<span>No Tasks currently, add one from the form above.</span>) :
                             (<div>
-                                <ul class="no-bullets">
+                                <ul className="no-bullets">
                                     {listItems}
                                 </ul>
                             </div>)
@@ -90,9 +90,9 @@ class ToDoItem extends React.Component {
 
     render() {
         return (
-            <div class="row">
-                <div class="col-6"><span>{this.props.task.name}</span></div>
-                <div class="col-2"><button class="btn btn-danger btn-sm" type="button" onClick={this.removeTask}>Remove</button></div>
+            <div className="row">
+                <div className="col-6"><span>{this.props.task.name}</span></div>
+                <div className="col-2"><button className="btn btn-danger btn-sm" type="button" onClick={this.removeTask}>Remove</button></div>
             </div>
         );
     }
