@@ -11,7 +11,7 @@
         }
     });
 
-    var app = new Vue({
+    new Vue({
         el: '#app',
         data: {
             newTask: '',
