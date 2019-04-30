@@ -1,0 +1,62 @@
+﻿@page "/blazortodo"
+@using todoapps_blazor.Client.Models
+
+<h1>Blazor</h1>
+
+<div class="row pb-3">
+    <div class="col">
+        <form>
+            <div class="row">
+                <div class="col-6">
+                    <label for="item">To do:</label>
+                    <input id="item" type="text" placeholder="To do" bind="@newTodoName" />
+                </div>
+                <div class="col-2">
+                    <button type="button" onclick="@AddToDoItem"class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        @if (toDoItems.Count() > 0)
+        {
+            <ul class="no-bullets">
+                @foreach (var todo in toDoItems)
+                {
+                    <li class="pb-3">
+                        <ToDoItem todo="todo" OnRemove="@RemoveToDoItem" />
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div id="tasks">
+                No Tasks currently, add one from the form above.
+            </div>
+        }
+    </div>
+</div>
+
+@functions {
+    private IList<ToDoItem> toDoItems = new List<ToDoItem>();
+    private string newTodoName;
+    private int Id = 1;
+
+
+    private void AddToDoItem()
+    {
+        Console.WriteLine(string.Format("{0} {1}", "Adding item", newTodoName));
+        toDoItems.Add(new ToDoItem { Id = Id++, Name = newTodoName });
+        newTodoName = string.Empty;
+    }
+
+    private void RemoveToDoItem(int idToRemove)
+    {
+        Console.WriteLine(string.Format("Removing item {0}", idToRemove));
+
+        toDoItems = toDoItems.Where(x => x.Id != idToRemove).ToList();
+    }
+}

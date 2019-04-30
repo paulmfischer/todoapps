@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todoapps", "todoapps\todoapps.csproj", "{AEA5141E-005E-446F-97F9-F450B81CF841}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "todoapps", "todoapps\todoapps.csproj", "{AEA5141E-005E-446F-97F9-F450B81CF841}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "todoapps-blazor.Server", "todoapps-blazor.Server\todoapps-blazor.Server.csproj", "{FE472317-0711-491A-BB90-402AED08EE78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "todoapps-blazor.Client", "todoapps-blazor.Client\todoapps-blazor.Client.csproj", "{CB4B0C5F-8D8A-4201-A412-E1A3887FDD08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "todoapps-blazor.Shared", "todoapps-blazor.Shared\todoapps-blazor.Shared.csproj", "{4BFBD65C-BBA5-43A6-B98F-ADBCFE3C152F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{AEA5141E-005E-446F-97F9-F450B81CF841}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEA5141E-005E-446F-97F9-F450B81CF841}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEA5141E-005E-446F-97F9-F450B81CF841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE472317-0711-491A-BB90-402AED08EE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE472317-0711-491A-BB90-402AED08EE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE472317-0711-491A-BB90-402AED08EE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE472317-0711-491A-BB90-402AED08EE78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB4B0C5F-8D8A-4201-A412-E1A3887FDD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB4B0C5F-8D8A-4201-A412-E1A3887FDD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB4B0C5F-8D8A-4201-A412-E1A3887FDD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB4B0C5F-8D8A-4201-A412-E1A3887FDD08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BFBD65C-BBA5-43A6-B98F-ADBCFE3C152F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BFBD65C-BBA5-43A6-B98F-ADBCFE3C152F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BFBD65C-BBA5-43A6-B98F-ADBCFE3C152F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BFBD65C-BBA5-43A6-B98F-ADBCFE3C152F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

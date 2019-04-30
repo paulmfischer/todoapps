@@ -1,0 +1,20 @@
+﻿@using todoapps_blazor.Client.Models
+
+<div class="row">
+    <div class="col-6"><span>@todo.Name</span></div>
+    <div class="col-2"><button class="btn btn-danger btn-sm" type="button" onclick="@(e => RemoveItem(e, todo.Id))">Remove</button></div>
+</div>
+
+@functions
+{
+    [Parameter]
+    private ToDoItem todo { get; set; }
+
+    [Parameter]
+    private EventCallback<int> OnRemove { get; set; }
+
+    private async void RemoveItem(UIMouseEventArgs e, int id)
+    {
+        await OnRemove.InvokeAsync(id);
+    }
+}
